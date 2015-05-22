@@ -50,12 +50,21 @@ function create_config
     echo "-> Config set"
 }
 
+function run_test
+{
+    echo "Start unittesting..."
+    path=$(pwd)
+    echo "libft :"
+    python  $path/tests/test_libft.py
+}
+
 function main
 {
     # Requirements
     go_to_dirname
     setup_moulitest
     create_config
+    run_test
 }
 
 main
