@@ -75,7 +75,7 @@ class TestLibAsserts(unittest.TestCase):
             self.assertEqual(0, call([self.run, char]))
 
     def test_isblank(self):
-        for char in self.ascii_printable:
+        for char in [" ", "\n", "a", "\t", "  "]:
             self.assertEqual(0, call([self.run, char]))
 
     def test_isdigit(self):
