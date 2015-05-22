@@ -1,5 +1,7 @@
 # 42
 
+[![Build Status](https://travis-ci.org/jbalestra/42.svg?branch=master)](https://travis-ci.org/jbalestra/42)
+
 More details about the projects in subjects.
 
 ## C
