@@ -7,7 +7,6 @@ int	main(int ac, char **av)
 {
 	int i;
 	int n;
-	char s = ' ';
 
 	if (ac == 1)
 		return 1;
@@ -29,11 +28,6 @@ int	main(int ac, char **av)
 			n = 0;
 			i++;
 		}
-	}
-	if (isblank(s) != ft_isblank(s))
-	{
-		printf("%i:%i=%i\n", s, isblank(s), ft_isblank(s));
-		return 3;
 	}
 	return 0;
 }
