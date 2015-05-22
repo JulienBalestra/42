@@ -56,6 +56,7 @@ function run_test
     path=$(pwd)
     echo "libft :"
     python  $path/tests/test_libft.py
+    return $?
 }
 
 function main
@@ -65,6 +66,7 @@ function main
     setup_moulitest
     create_config
     run_test
+    return $?
 }
 
 main
