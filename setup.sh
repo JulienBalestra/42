@@ -52,7 +52,7 @@ function create_config
 
 function run_test
 {
-    echo "Start unittesting..."
+    echo "Start unittesting on "$(uname -s)
     path=$(pwd)
     echo "libft :"
     python  $path/tests/test_libft.py
