@@ -1,6 +1,4 @@
-os:
-  - linux
-  - osx
+os: osx
 language: c
 script:
   ./setup.sh
