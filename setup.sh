@@ -47,6 +47,7 @@ function create_config
         output=${line/"@"/$path/}
         echo $output >> moulitest/config.ini
     done < requirements/moulitest.config
+    export LC_ALL=C
     echo "-> Config set"
 }
 
