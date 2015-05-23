@@ -53,10 +53,12 @@ function create_config
 
 function run_test
 {
+    cd tests
     echo "Start unittesting on "$(uname -s)
-    path=$(pwd)
-    echo "libft :"
-    python  $path/tests/test_libft.py
+    echo "libft:"
+    nosetests test_libft.py
+    echo "get next line:"
+    nosetests test_gnl.py
     return $?
 }
 
