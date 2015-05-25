@@ -5,6 +5,8 @@
 ### Tavis CI for
  
 * libft
+* get next line
+* computorv1
 
 
 More details about the projects in subjects
