@@ -59,6 +59,8 @@ function run_test
     nosetests test_libft.py
     echo "get next line:"
     nosetests test_gnl.py
+    echo "computorv1:"
+    nosetests test_computorv1.py
     return $?
 }
 
