@@ -70,26 +70,31 @@ function create_config
 
 function run_test
 {
+    declare -i ret=0
     cd tests
     echo "Start unittesting on "$(uname -s)
     echo ""
     echo "[libft]"
     nosetests test_libft.py
+    ret=($?+ret)
     echo "[/libft]"
     echo ""
     echo "[get next line]"
     nosetests test_gnl.py
+    ret=($?+ret)
     echo "[/get next line]"
     echo ""
     echo "[ls]"
     nosetests test_ls.py
+    ret=($?+ret)
     echo "[/ls]"
     echo ""
     echo "[computorv1]"
     nosetests test_computorv1.py test_solver.py
+    ret=($?+ret)
     echo "[/computorv1]"
     echo ""
-    return $?
+    return $ret
 }
 
 function main
