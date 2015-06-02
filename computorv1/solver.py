@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import re
 import os
 import argparse
@@ -21,12 +22,13 @@ def convert_float(number):
 
 
 class Equation:
-	def __init__(self, eq_input):
+	def __init__(self, eq_input, goodies=False):
 		self.input = self.check_n_format_input(eq_input)
 		self.reduced = {}
 		self.degree = None
 		self.solution = None
 		self.discriminant = None
+		self.goodies = goodies
 
 	@staticmethod
 	def check_n_format_input(eq_input):
@@ -42,7 +44,7 @@ class Equation:
 			pass
 		else:
 			raise ArithmeticError(
-				"The equation is not coherent, should be quoted like"
+				"The equation is not coherent, should be quoted like "
 				"\"5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0\"")
 		for sign in ["+", "-", "*", "="]:
 			eq_input = eq_input.replace(sign, " %s " % sign)
@@ -70,48 +72,47 @@ class Equation:
 	def _process_degree(self):
 		try:
 			for i in range(self.degree, -1, -1):
-				try:
-					if self.reduced["X^" + str(i)] != 0:
-						self.degree = i
-						break
-				except KeyError:
-					if i == 0:
-						self.degree = 0
-			return self.degree
+				if self.get_value("X^" + str(i), self.reduced) != 0:
+					self.degree = i
+					return self.degree
+			self.degree = 0
 		except TypeError:
 			self._process_reduced_form()
 			self._process_degree()
-			return self.degree
+		return self.degree
 
 	@staticmethod
-	def affect_coefficient(key, dictionary):
+	def get_value(key, dictionary):
 		try:
 			return dictionary[key]
 		except KeyError:
 			return 0
 
 	def _solve_zero(self):
-		if self.reduced["X^0"] == 0:
+		if self.get_value("X^0", self.reduced) == 0:
 			self.solution = (True,)
 		else:
 			self.solution = (False,)
 
 	def _solve_one(self):
 		a = self.reduced["X^1"]
-		b = self.affect_coefficient("X^0", self.reduced)
+		b = self.get_value("X^0", self.reduced)
 		self.solution = (convert_float(-b / a),)
 
 	def _solve_two(self):
 		a = self.reduced["X^2"]
-		b = self.affect_coefficient('X^1', self.reduced)
-		c = self.affect_coefficient("X^0", self.reduced)
+		b = self.get_value('X^1', self.reduced)
+		c = self.get_value("X^0", self.reduced)
 		self.discriminant = b * b - 4 * a * c
 		if self.discriminant > 0:
 			x1 = convert_float((-b + my_sqrt(self.discriminant)) / (2 * a))
 			x2 = convert_float((-b - my_sqrt(self.discriminant)) / (2 * a))
 			self.solution = x1, x2
 		elif self.discriminant == 0:
-			self.solution = (convert_float(-b / (2 * a)),)
+			if b != 0 or a != 0:
+				self.solution = (convert_float(-b / (2 * a)),)
+			else:
+				self.solution = (0, )
 		else:
 			real = - b / (2 * a)
 			imaginary = my_sqrt(- self.discriminant) / (2 * a)
@@ -137,7 +138,7 @@ class Equation:
 	def _string_reduced_form(self):
 		equation = []
 		for i in range(self.degree + 1):
-			if self.affect_coefficient("X^" + str(i), self.reduced) != 0:
+			if self.get_value("X^" + str(i), self.reduced) != 0:
 				equation.append(str(convert_float(self.reduced["X^" + str(i)])))
 				equation.append("*")
 				equation.append("X^" + str(i))
@@ -146,16 +147,31 @@ class Equation:
 			equation.pop(-1)
 			equation.append("=")
 			equation.append("0")
-			return "Reduced form: " + " ".join(equation).replace("+ -", "- ")
+			return "Reduced form: " + self._goodies_reduced(" ".join(equation).replace("+ -", "- "))
 		return "No reduced form"
 
-	def _build_display_message(self):
+	def _goodies_degree(self, string):
+		if self.goodies is True:
+			return "\033[0;36m\033[1m[ %s ]\033[0m" % str(string)
+		return str(string)
+
+	def _goodies_reduced(self, string):
+		if self.goodies is True:
+			return "\033[0;33m\033[1m( %s )\033[0m" % string
+		return string
+
+	def _goodies_solution(self, string):
+		if self.goodies is True:
+			return "\033[0;32m\033[1m\t[ %s ]\033[0m" % str(string)
+		return str(string)
+
+	def build_display_message(self):
 		if self.solution is None:
 			self.solve()
 
 		message = list()
 		message.append(self._string_reduced_form())
-		message.append("Polynomial degree: %s" % str(self.degree))
+		message.append("Polynomial degree: %s" % self._goodies_degree(self.degree))
 		if self.degree == 0:
 			if self.solution == (False,):
 				message.append("There is no solution")
@@ -163,25 +179,25 @@ class Equation:
 				message.append("Every complex number is solution")
 		elif self.degree == 1:
 			message.append("The solution is:")
-			message.append(str(self.solution[0]))
+			message.append(self._goodies_solution(self.solution[0]))
 		elif self.degree == 2:
 			if self.discriminant > 0:
 				message.append("Discriminant is strictly positive, the two solutions are:")
-				message.append(str(self.solution[0]))
-				message.append(str(self.solution[1]))
+				message.append(self._goodies_solution(self.solution[0]))
+				message.append(self._goodies_solution(self.solution[1]))
 			elif self.discriminant == 0:
 				message.append("Discriminant is null, the solution is:")
-				message.append(str(self.solution[0]))
+				message.append(self._goodies_solution(self.solution[0]))
 			else:
 				message.append("Discriminant is strictly negative, the two solutions are:")
-				message.append(self.solution[0])
-				message.append(self.solution[1])
+				message.append(self._goodies_solution(self.solution[0]))
+				message.append(self._goodies_solution(self.solution[1]))
 		else:
 			message.append("The polynomial degree is strictly greater than 2, I can't solve")
 		return message
 
 	def display_solution(self, fd=1):
-		for line in self._build_display_message():
+		for line in self.build_display_message():
 			os.write(fd, line + "\n")
 
 	def get_discriminant(self):
@@ -202,8 +218,20 @@ class Equation:
 
 if __name__ == "__main__":
 	args = argparse.ArgumentParser()
-	args.add_argument("equation", type=Equation.check_n_format_input,
-					  help="Should be quoted like \"5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0\"")
-	solver = Equation(args.parse_args().equation)
-	solver.solve()
-	solver.display_solution()
+	args.add_argument("equation", help="Should be quoted like \"5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0\"")
+	args.add_argument('-g', '--goodies', type=bool, default=False, help='Activate the pretty print ?')
+	args.add_argument('-e', '--error', type=bool, default=False, help='Remove the python exception ?')
+	goodies = args.parse_args().goodies
+	if args.parse_args().error is True:
+		try:
+			solver = Equation(args.parse_args().equation, goodies=goodies)
+			solver.solve()
+			solver.display_solution()
+		except ArithmeticError:
+			os.write(2, "The equation is not coherent, should be quoted like :\n"
+			            "\"5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0\"\n")
+			exit(1)
+	else:
+		solver = Equation(args.parse_args().equation, goodies=goodies)
+		solver.solve()
+		solver.display_solution()
