@@ -1,4 +1,4 @@
-# 42 [![Build Status](https://travis-ci.org/JulienBalestra/42.svg?branch=master)](https://travis-ci.org/jbalestra/42)
+# 42 [![Build Status](https://travis-ci.org/JulienBalestra/42.svg?branch=master)](https://travis-ci.org/julienbalestra/42)
 
 
 
@@ -6,6 +6,8 @@
  
 * libft
 * get next line
+* ls-Darwin
+* ls-Linux
 * computorv1
 
 
