@@ -38,7 +38,7 @@ function setup_moulitest
 }
 
 function config_moulitest
-{    
+{
     mv moulitest/config.ini moulitest/config.ini.old 2> /dev/null
     while read line
     do
@@ -64,7 +64,7 @@ function create_config
     echo "Check config..."
     config_pip
     config_moulitest
-    export LC_ALL=C    
+    export LC_ALL=C
     echo "-> Config set"
 }
 
@@ -94,6 +94,9 @@ function run_test
     ret=($?+ret)
     echo "[/computorv1]"
     echo ""
+    echo "Again, full stack"
+    nosetests test_libft.py test_gnl.py test_ls.py test_computorv1.py test_solver.py
+    ret=($?+ret)
     return $ret
 }
 
