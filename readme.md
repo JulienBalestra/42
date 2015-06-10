@@ -10,7 +10,7 @@
 * ls-Linux
 * computorv1
 
-With more than **250 unit & functional tests**
+With more than **350 unit & functional tests**
 
 
 More details about the projects in subjects
