@@ -14,7 +14,7 @@ class PyMake:
             return makefile.read()
         
     def make(self, string_arg=None, verbose=False):
-        cmd = ["make", "__arg", "-j", "-C", self.makefile_dir]
+        cmd = ["make", "__arg", "-C", self.makefile_dir]
         if string_arg is None:
             cmd.pop(1)
         elif type(string_arg) is str:
