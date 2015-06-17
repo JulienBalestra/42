@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
-import solver
+from computorv1 import computor
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
 def coherent_split(string):
@@ -27,7 +27,7 @@ def get_form(received):
                 equation = received['<left>']
             else:
                 equation = received['<left>'].replace("=", "")
-                equation = equation + "= 0"
+                equation += " = 0"
         elif received['<right>']:
             if "=" in received['<right>'] and coherent_split(received['<right>']) is True:
                 equation = received['<right>']
@@ -42,26 +42,40 @@ def get_form(received):
         print e
 
 
-@app.route('/', methods=['POST', 'GET'])
+def split_list(message):
+    equation = list()
+    solution = list(message)
+    for i in range(0, 2):
+        equation.append(message[i].split(": "))
+        solution.pop(0)
+    if "Reduced" in message[2]:
+        equation.append(message[2].split(": "))
+        solution.pop(0)
+    return equation, solution
+
+
+@application.route('/', methods=['POST', 'GET'])
 def root():
     if request.method == 'POST':
         equation = get_form(request.form)
         if equation is not None:
             top = "You gave the following input :"
             try:
-                solve = solver.Equation(str(equation))
+                solve = computor.Equation(str(equation))
                 eq_input = solve.__repr__().split("=")
-                response = solve.build_display_message()
-                return render_template('index.html', top=top, left=eq_input[0], right=eq_input[1], response=response)
+                message = solve.build_display_message()
+                response = split_list(message)
+                return render_template('index.html', top=top, left=eq_input[0], right=eq_input[1],
+                                       equation=response[0], solution=response[1])
 
             except ArithmeticError:
                 equation = equation.split("=")
                 response = ["Arithmetic error, try again like the example :", "", "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 0"]
-                return render_template('index.html', top=top, left=equation[0], right=equation[1], response=response)
+                return render_template('index.html', top=top, left=equation[0], right=equation[1], solution=response)
 
     top, left, right = "Example :", "5 * X^0 + 4 * X^1 - 9.3 * X^2", "0"
     return render_template('index.html', top=top, left=left, right=right)
 
 
 if __name__ == '__main__':
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    application.run(host="127.0.0.1", port=5000)

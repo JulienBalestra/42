@@ -90,12 +90,12 @@ function run_test
     echo "[/ls]"
     echo ""
     echo "[computorv1]"
-    nosetests test_computorv1.py test_solver.py
+    nosetests test_computorv1.py test_sample.py
     ret=($?+ret)
     echo "[/computorv1]"
     echo ""
     echo "Again, full stack"
-    nosetests test_libft.py test_gnl.py test_ls.py test_computorv1.py test_solver.py
+    nosetests test_libft.py test_gnl.py test_ls.py test_computorv1.py test_sample.py
     ret=($?+ret)
     return $ret
 }

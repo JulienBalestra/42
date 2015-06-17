@@ -2,12 +2,10 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-
+    <link rel="icon" type="image/png" href="https://s3-eu-west-1.amazonaws.com/computor/calc.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/computor.css">
-
+    <link rel="stylesheet" href="https://s3-eu-west-1.amazonaws.com/computor/computor.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
@@ -18,13 +16,12 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Computor v1</a>
-            <a class="navbar-brand"><img src="static/logo-42.jpeg" alt="42"></a>
+            <a class="navbar-brand"><img src="https://s3-eu-west-1.amazonaws.com/computor/logo-42.jpeg" alt="42"></a>
         </div>
 
-        <!-- Button trigger modal -->
         <div class="nav navbar-nav navbar-right">
             <a class="navbar-brand">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">
                     Help !
                 </button>
             </a>
@@ -54,98 +51,71 @@
 
             <p class="text-center">
                 <button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="left"
-                        title="Enter fields and press to Solve Equation">Solve
+                        title="Enter fields and press to Solve Equation">Compute
                 </button>
             </p>
         </form>
-        <br><br>
     </div>
     <div class="col-md-12">
+        <br>
+        <br>
+
         <div class="jumbotron">
+
             <p class="text-center">
-                {{ top }}
+                <samp>{{ top }}</samp>
             </p>
             <br>
 
-            <div class="col-md-5">
-                <p class="text-center">
-                    <i>{{ left }}</i>
-                </p>
-            </div>
-            <div class="col-md-2">
-                <p class="text-center">
-                    <i>=</i>
-                </p>
-            </div>
-            <div class="col-md-5">
-                <p class="text-center">
-                    <i>{{ right }}</i>
-                </p>
-            </div>
-            <br>
-            <br>
-            <p class="text-center">
-                {% for line in response %}
-                <br>{{ line }}
-                {% endfor %}
-            </p>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Help</h4>
-            </div>
-            <div class="modal-body">
-                <div class="page-header">
-                    <p>
-                        This is Computor V1 for the programming school 42 <br>
-                        The project is about resolving polynomial equation until degree 2 ! <br>
-                        You can get read the french <a href="static/computorv1.fr.pdf">subject</a> <br>
+            <div class="col-md-12">
+                <div class="col-md-5">
+                    <p class="text-center">
+                        <samp>{{ left }}</samp>
                     </p>
                 </div>
-                <h4>How to</h4>
-
-                <p>
-                    Enter some equation in the two fields in the main page : <br>
-
-                    <i>5 * X^0 + 4 * X^1 - 9.3 * X^2 = 0</i><br></p>
-
-                <p>or something more natural like :<br>
-                    <i>5 + 4x - 9,3 x**2</i><br></p>
-
-                <p>When <u>only</u> one field is filled, the second one takes 0 by default. </p>
-                <br>
-                <h4>Bonus</h4>
-                Steps Input and Formatted<br>
-                4 -> 4 * X^0 <br>
-                x -> 1 * X^1 <br>
-                5x -> 5 * X^1 <br>
-                x**2 -> X^2 <br>
-                x * 5 -> 5 * X^1 <br>
-                replacing spaces <br>
-                00.0 -> 0 <br>
-                multi coma : , . <br>
-                01 -> 1 <br>
-                fraction <br>
-                colorize in terminal (-g) <br>
-                raise in terminal (-e) <br>
-                this web platform <br>
-                continuous integration (visit the <a href="https://github.com/JulienBalestra/computor">github</a>
-                page)<br>
-
+                <div class="col-md-2">
+                    <p class="text-center">
+                        <samp>=</samp>
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <p class="text-center">
+                        <samp>{{ right }}</samp>
+                    </p>
+                </div>
+                <br><br>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+
+            <div class="col-md-12"><br></div>
+
+
+            {% if equation %}
+            <br><br>
+            {% endif %}
+            <samp>
+                {% for line in equation %}
+                <div class="col-md-4"><p class="text-right">{{ line[0] }}:</p></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-7"><p class="text-right">{{ line[1] }}</p></div>
+                {% endfor %}
+
+                <div class="col-md-12"><br><br><br></div>
+
+                <p class="text-center">
+                    {% for line in solution %}
+                    {% if "degree" in line %}
+                    <br>{{ line }}<br>
+                    {% else %}
+                    <br>{{ line }}
+                    {% endif %}
+                    {% endfor %}
+                </p></samp>
+
         </div>
     </div>
 </div>
+
+{% include 'help.html' %}
 
 </body>
 </html>
