@@ -18,7 +18,6 @@ More details about the projects in subjects
 ## C
 #### Succeeded
 
-* 42_towel
 * Libft (108%)
 * Get_Next_Line (111%)
 * ft_ls (117%)
@@ -30,14 +29,14 @@ More details about the projects in subjects
 ## Python
 #### Succeeded
 
-* None
+* Computor V1 (125%)
 
 #### In progress
 
-* Computor V1
+* None
 
 
-## X86 Assembly
+## Assembly
 #### Succeeded
 
 * None
