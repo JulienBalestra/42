@@ -9,6 +9,7 @@
 * ls-Darwin
 * ls-Linux
 * computorv1
+* libftASM
 
 With more than **350 unit & functional tests**
 
