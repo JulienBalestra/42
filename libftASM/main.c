@@ -1,0 +1,105 @@
+#include "libftasm.h"
+#include <stdio.h>
+#include <string.h>
+
+int    ok(void)
+{
+    printf("\033[0;32m\033[1m.\033[0m");
+    return (0);
+}
+
+int ko(void)
+{
+    printf("\033[0;31m\033[1mF\033[0m");
+    return (1);
+}
+
+int	check_is(int ret, int (*f)(int c), int c, int result)
+{
+    if (f(c) == result)
+    {
+        ok();
+        return (ret);
+    }
+    else
+    {        
+        ko();
+        printf("(%i != %i)", f(c), result);
+        return (ret + 1);
+    }
+}
+
+int is_to_something(int ret)
+{
+    char str[] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r\x0b\x0c";
+    char low[] = "abcdefghijklmnopqrstuvwxyz";
+    char upp[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int i;
+    
+    printf("\n\nft_isalpha\n");
+    for (i = 0 ; i < strlen(str) ; i++)
+        ret = check_is(ret, ft_isalpha, str[i], isalpha(str[i]));
+            
+    printf("\n\nft_isdigit\n");
+    for (i = 0 ; i < strlen(str) ; i++)
+        ret = check_is(ret, ft_isdigit, str[i], isdigit(str[i]));
+
+    printf("\n\nft_isalnum\n");
+    for (i = 0 ; i < strlen(str) ; i++)
+        ret = check_is(ret, ft_isalnum, str[i], isalnum(str[i]));
+
+    printf("\n\nft_isblank\n");
+    for (i = 0 ; i < strlen(str) ; i++)
+        ret = check_is(ret, ft_isblank, str[i], isblank(str[i]));
+
+    printf("\n\nft_isascii\n");
+    for (i = 0 ; i < strlen(str) ; i++)
+        ret = check_is(ret, ft_isascii, str[i], isascii(str[i]));
+
+    printf("\n\nft_isprint\n");
+    for (i = 0 ; i < strlen(str) ; i++)
+        ret = check_is(ret, ft_isprint, str[i], isprint(str[i]));
+
+    printf("\n\nft_islower\n");
+    for (i = 0 ; i < strlen(low) ; i++)
+        ret = check_is(ret, ft_islower, low[i], 1);
+    for (i = 0 ; i < strlen(upp) ; i++)
+        ret = check_is(ret, ft_islower, upp[i], 0);
+                
+    printf("\n\nft_isupper\n");
+    for (i = 0 ; i < strlen(low) ; i++)
+        ret = check_is(ret, ft_isupper, low[i], 0);
+    for (i = 0 ; i < strlen(upp) ; i++)
+        ret = check_is(ret, ft_isupper, upp[i], 1);
+    
+    printf("\n\nft_toupper\n");
+    for (i = 0 ; i < strlen(low) ; i++)
+        ret = check_is(ret, ft_toupper, low[i], low[i] - 32);    
+    for (i = 0 ; i < strlen(upp) ; i++)
+        ret = check_is(ret, ft_toupper, upp[i], upp[i]);  
+          
+    printf("\n\nft_tolower\n");
+    for (i = 0 ; i < strlen(low) ; i++)
+        ret = check_is(ret, ft_tolower, low[i], low[i]);
+    for (i = 0 ; i < strlen(upp) ; i++)
+        ret = check_is(ret, ft_tolower, upp[i], upp[i] + 32);
+
+    
+    
+    return (ret);
+}
+
+
+
+
+int main(void)
+{
+    int ret;
+
+    ret = 0;
+    ret = is_to_something(ret);
+    
+
+    printf("\n\n\nfailed: %i\n", ret);
+    return (ret > 0 ? 1 : 0);
+}
