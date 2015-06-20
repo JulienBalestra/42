@@ -94,8 +94,13 @@ function run_test
     ret=($?+ret)
     echo "[/computorv1]"
     echo ""
+    echo "[libftASM]"
+    nosetests test_libftasm.py
+    ret=($?+ret)
+    echo "[/libftASM]"
+    echo ""
     echo "Again, full stack"
-    nosetests test_libft.py test_gnl.py test_ls.py test_computorv1.py test_sample.py
+    nosetests test_libft.py test_gnl.py test_ls.py test_computorv1.py test_sample.py test_libftasm.py
     ret=($?+ret)
     return $ret
 }
