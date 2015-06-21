@@ -158,6 +158,9 @@ int main(void)
     ret = is_to_something(ret);
     ret = check_strlen(ret);
     ret = check_bzero(ret);
+    printf("\n");
+    ft_puts("\nft_puts");
+    ft_puts("\033[0;32m\033[1m.\033[0m");
     
 
     printf("\n\n\nfailed: %i\n", ret);
