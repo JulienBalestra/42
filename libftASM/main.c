@@ -1,6 +1,7 @@
 #include "libftasm.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int    ok(void)
 {
@@ -124,6 +125,29 @@ int check_strlen(int ret)
     return (ret);
 }
 
+int check_bzero(int ret)
+{
+    char *ptr;
+    int i = 3;
+    
+    ptr = NULL;
+    printf("\n\nft_bzero\n");    
+    ptr = (char *)malloc(sizeof(char) * i);
+    ft_bzero(ptr, i);
+    while (--i >= 0)
+    {
+        if (ptr[i] == 0)
+            ok();
+        else
+        {
+            ko();
+            ret++;
+        }
+    }
+    
+    return (ret);    
+}
+
 
 int main(void)
 {
@@ -133,6 +157,7 @@ int main(void)
     printf("Start testing :");
     ret = is_to_something(ret);
     ret = check_strlen(ret);
+    ret = check_bzero(ret);
     
 
     printf("\n\n\nfailed: %i\n", ret);

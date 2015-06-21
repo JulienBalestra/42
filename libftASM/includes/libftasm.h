@@ -1,5 +1,6 @@
 #ifndef LIBFTASM_H
 # define LIBFTASM_H
+# include <strings.h>
 
 
 int	ft_isalpha(int c);
@@ -14,6 +15,7 @@ int	ft_toupper(int c);
 int	ft_tolower(int c);
 
 int ft_strlen(char *str);
+void ft_bzero(void *s, size_t n);
 
 
 #endif

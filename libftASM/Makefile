@@ -18,7 +18,8 @@ ft_isupper.s \
 ft_toupper.s \
 ft_tolower.s \
 ft_isprint.s \
-ft_strlen.s
+ft_strlen.s	\
+ft_bzero.s
 
 
 OBJS = $(patsubst %.s, $(OBJSDIR)/%.o, $(SRCS))
