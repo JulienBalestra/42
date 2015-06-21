@@ -65,7 +65,7 @@ function config_nasm
     if [ $? -ne 0 ]
     then
         apt-get update -qq
-        apt-get install nasm
+        apt-get install nasm -y
         if [ $? -ne 0 ]
         then
             echo "failed to install nasm"
