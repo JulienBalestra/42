@@ -6,7 +6,7 @@ ft_strlen:
 	push rdi
 	mov	rax, 0
 	mov	rcx, -1
-	repne scasb
+	repne scasb ; compare memory byte
 	mov	rax, -2
 	sub	rax, rcx
 
