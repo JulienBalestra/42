@@ -59,11 +59,27 @@ function config_pip
     fi
 }
 
+function config_nasm
+{
+    nasm -h > /dev/null
+    if [ $? -ne 0 ]
+    then
+        apt-get update -qq
+        apt-get install nasm
+        if [ $? -ne 0 ]
+        then
+            echo "failed to install nasm"
+            exit 2
+        fi
+    fi
+}
+
 function create_config
 {
     echo "Check config..."
     config_pip
     config_moulitest
+    config_nasm
     export LC_ALL=C
     echo "-> Config set"
 }
