@@ -82,14 +82,47 @@ int is_to_something(int ret)
     for (i = 0 ; i < strlen(low) ; i++)
         ret = check_is(ret, ft_tolower, low[i], low[i]);
     for (i = 0 ; i < strlen(upp) ; i++)
-        ret = check_is(ret, ft_tolower, upp[i], upp[i] + 32);
-
-    
+        ret = check_is(ret, ft_tolower, upp[i], upp[i] + 32);    
     
     return (ret);
 }
 
-
+int check_strlen(int ret)
+{
+    char one[] = "123";
+    char two[] = "";
+    char three[] = "1234567890";
+ 
+    printf("\n\nft_strlen\n");
+    if (ft_strlen(one) == 3)
+    {
+        ok();        
+    }
+    else
+    {
+        ko();
+        ret++;
+    }
+    if (ft_strlen(two) == 0)
+    {
+        ok();        
+    }
+    else
+    {
+        ko();
+        ret++;
+    }
+    if (ft_strlen(three) == 10)
+    {
+        ok();        
+    }
+    else
+    {
+        ko();
+        ret++;
+    }
+    return (ret);
+}
 
 
 int main(void)
@@ -97,7 +130,9 @@ int main(void)
     int ret;
 
     ret = 0;
+    printf("Start testing :");
     ret = is_to_something(ret);
+    ret = check_strlen(ret);
     
 
     printf("\n\n\nfailed: %i\n", ret);
