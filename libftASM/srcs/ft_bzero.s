@@ -8,7 +8,7 @@ ft_bzero:
 while:
 	cmp	rsi, 0
 	jle	exit
-	mov	byte[rdi], 0
+	mov	byte[rdi], 0 ; eq 0b
 	inc	rdi
 	dec	rsi
 	jmp	while
