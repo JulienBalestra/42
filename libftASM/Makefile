@@ -20,7 +20,8 @@ ft_tolower.s \
 ft_isprint.s \
 ft_strlen.s	\
 ft_bzero.s \
-ft_puts.s
+ft_puts.s \
+ft_memset.s
 
 
 OBJS = $(patsubst %.s, $(OBJSDIR)/%.o, $(SRCS))

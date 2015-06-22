@@ -17,5 +17,6 @@ int	ft_tolower(int c);
 int ft_strlen(char *str);
 void ft_bzero(void *s, size_t n);
 int ft_puts(const char *s);
+void    *memset(void *s, int c, size_t n);
 
 #endif
