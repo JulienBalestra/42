@@ -7,7 +7,9 @@ ft_memset:
 	mov rcx, rdx
 	cld
 	rep stosb
+	jmp exit
 
-end:
+exit:
 	pop rax
+	leave
 	ret
