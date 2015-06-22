@@ -3,16 +3,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-int    ok(void)
+void    ok(void)
 {
     printf("\033[0;32m\033[1m.\033[0m");
-    return (0);
 }
 
-int ko(void)
+void ko(void)
 {
     printf("\033[0;31m\033[1mF\033[0m");
-    return (1);
 }
 
 int	check_is(int ret, int (*f)(int c), int c, int result)
@@ -143,8 +141,7 @@ int check_bzero(int ret)
             ko();
             ret++;
         }
-    }
-    
+    }    
     return (ret);    
 }
 
@@ -161,8 +158,7 @@ int main(void)
     printf("\n");
     ft_puts("\nft_puts");
     ft_puts("\033[0;32m\033[1m.\033[0m");
-    
 
-    printf("\n\n\nfailed: %i\n", ret);
+    printf("\nfailed: %i\n", ret);
     return (ret > 0 ? 1 : 0);
 }
