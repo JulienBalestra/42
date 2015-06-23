@@ -2,7 +2,7 @@
 
 
 
-### Tavis CI for
+### Tavis CI and Codeship for
  
 * libft
 * get next line
