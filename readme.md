@@ -9,7 +9,7 @@
 * ls-Darwin
 * ls-Linux
 * computorv1
-* libftASM
+* libftASM (Codeship : missing nasm)
 
 With more than **350 unit & functional tests**
 
