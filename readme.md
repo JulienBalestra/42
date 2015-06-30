@@ -11,7 +11,7 @@
 * computorv1
 * libftASM
 
-With more than **350 unit & functional tests**
+With more than **370 unit & functional tests**
 
 
 More details about the projects in subjects/
