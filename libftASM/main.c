@@ -126,7 +126,7 @@ int check_strlen(int ret)
 int check_bzero(int ret)
 {
     char *ptr;
-    int i = 3;
+    int i = 50;
     
     ptr = NULL;
     printf("\n\nft_bzero\n");    
@@ -142,9 +142,53 @@ int check_bzero(int ret)
             ret++;
         }
     }    
-    return (ret);    
+    return (ret);
 }
 
+int check_memset(int ret)
+{
+    char *ptr;
+    int i = 50;
+    
+    ptr = NULL;
+    printf("\n\nft_memset\n");
+    ptr = (char *)malloc(sizeof(char) * i);
+    ft_memset(ptr, 0, i);
+    while (--i >= 0)
+    {
+        if (ptr[i] == 0)
+            ok();
+        else
+        {
+            ko();
+            ret++;
+        }
+    }    
+    return (ret);
+}
+
+int check_memalloc(int ret)
+{
+    char *ptr;
+    int i = 50;
+    int j = 0;
+    
+    ptr = NULL;
+    printf("\n\nft_memalloc\n");
+    ptr = ft_memalloc(i);
+    while (j < i)
+    {
+        if (ptr[j] == 0)
+            ok();
+        else
+        {
+            ko();
+            ret++;
+        }
+        j++;
+    }
+    return (ret);
+}
 
 int main(void)
 {
@@ -155,9 +199,14 @@ int main(void)
     ret = is_to_something(ret);
     ret = check_strlen(ret);
     ret = check_bzero(ret);
+    ret = check_memset(ret);
+    ret = check_memalloc(ret);
     printf("\n");
     ft_puts("\nft_puts");
     ft_puts("\033[0;32m\033[1m.\033[0m");
+    ft_puts(NULL);
+    printf("(null) == OK\n");
+    
 
     printf("\nfailed: %i\n", ret);
     return (ret > 0 ? 1 : 0);

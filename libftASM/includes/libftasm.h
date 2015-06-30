@@ -1,6 +1,7 @@
 #ifndef LIBFTASM_H
 # define LIBFTASM_H
 # include <strings.h>
+# include <stdlib.h>
 
 
 int	ft_isalpha(int c);
@@ -18,5 +19,7 @@ int ft_strlen(char *str);
 void ft_bzero(void *s, size_t n);
 int ft_puts(const char *s);
 void    *memset(void *s, int c, size_t n);
+void		*ft_memalloc(size_t size);
+
 
 #endif
