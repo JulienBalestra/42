@@ -25,7 +25,8 @@ ft_memset.s \
 ft_memalloc.s \
 ft_strcat.s \
 ft_memcpy.s \
-ft_strdup.s
+ft_strdup.s \
+ft_cat.s
 
 
 

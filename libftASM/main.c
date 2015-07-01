@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 
 void    ok(void)
 {
@@ -277,9 +281,19 @@ int check_strdup(int ret)
     return (ret);
 }
 
+void call_cat(void)
+ {
+    int fd = 0;
+    
+    printf("\n\nft_cat\nHello World !");
+    fd = open("hello.world", O_RDONLY);
+    ft_cat(fd);    
+ }
+
 int main(void)
 {
     int ret;
+    
 
     ret = 0;
     printf("Start testing :");
@@ -296,6 +310,7 @@ int main(void)
     ret = check_strcat(ret);
     ret = check_memcpy(ret);
     ret = check_strdup(ret);
+    call_cat();
 
     
 

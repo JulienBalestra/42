@@ -23,8 +23,6 @@ void *ft_memalloc(size_t size);
 char *ft_strcat(char *dest, const char *src);
 void *memcpy(void *dest, const void *src, size_t n);
 char *ft_strdup(const char *s);
-
-
-
+void ft_cat(int fd);
 
 #endif
