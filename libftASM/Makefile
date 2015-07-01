@@ -22,7 +22,8 @@ ft_strlen.s	\
 ft_bzero.s \
 ft_puts.s \
 ft_memset.s \
-ft_memalloc.s
+ft_memalloc.s \
+ft_strcat.s
 
 
 OBJS = $(patsubst %.s, $(OBJSDIR)/%.o, $(SRCS))

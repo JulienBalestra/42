@@ -190,6 +190,40 @@ int check_memalloc(int ret)
     return (ret);
 }
 
+int check_strcat(int ret)
+{
+    char *src;
+    char *dest;
+    int i = 5;
+    int j = 0;
+    
+    printf("\nft_strcat\n");
+    src = (char *)malloc(sizeof(char) * i);
+    dest = (char *)malloc(sizeof(char) * (i * 2));
+    while (j < i)
+    {
+        src[j] = 'z';
+        dest[j] = 'a';
+        j++;
+    }
+    dest = ft_strcat(dest, src);
+    j = 0;
+    while (j < i * 2)
+    {
+        if (j < i && dest[j] == 'a')
+            ok();
+        else if (dest[j] == 'z')
+            ok();
+        else
+        {
+            ko();
+            ret++;
+        }
+        j++;
+    }
+    return (ret);
+}
+
 int main(void)
 {
     int ret;
@@ -206,8 +240,10 @@ int main(void)
     ft_puts("\033[0;32m\033[1m.\033[0m");
     ft_puts(NULL);
     printf("(null) == OK\n");
+    ret = check_strcat(ret);
     
 
-    printf("\nfailed: %i\n", ret);
+
+    printf("\n\nfailed: %i\n", ret);
     return (ret > 0 ? 1 : 0);
 }

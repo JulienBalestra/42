@@ -20,6 +20,8 @@ void ft_bzero(void *s, size_t n);
 int ft_puts(const char *s);
 void    *memset(void *s, int c, size_t n);
 void		*ft_memalloc(size_t size);
+char		*ft_strcat(char *dest, const char *src);
+
 
 
 #endif
