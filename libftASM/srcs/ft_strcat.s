@@ -8,7 +8,7 @@ ft_strcat:
 
 find_end:
 	cmp	byte[rcx], 0
-	je	strcpy
+	je	char_cpy
 	inc	rcx
 	jmp	find_end
 
