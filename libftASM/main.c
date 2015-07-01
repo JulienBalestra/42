@@ -224,6 +224,28 @@ int check_strcat(int ret)
     return (ret);
 }
 
+int check_memcpy(int ret)
+{
+    char src[] = "abc";
+    char dest[] = "rst";
+    int i = 0;
+    
+    printf("\n\nft_memcpy\n");
+    ft_memcpy(dest, src, ft_strlen(src));
+    while (i < ft_strlen(src))
+    {
+        if (dest[i] == src[i])
+            ok();
+        else
+        {
+            ko();
+            ret++;
+        }
+        i++;
+    }
+    return (ret);
+}
+
 int main(void)
 {
     int ret;
@@ -241,6 +263,8 @@ int main(void)
     ft_puts(NULL);
     printf("(null) == OK\n");
     ret = check_strcat(ret);
+    ret = check_memcpy(ret);
+    
     
 
 
