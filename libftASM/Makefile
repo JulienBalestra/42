@@ -24,7 +24,8 @@ ft_puts.s \
 ft_memset.s \
 ft_memalloc.s \
 ft_strcat.s \
-ft_memcpy.s
+ft_memcpy.s \
+ft_strdup.s
 
 
 

@@ -246,6 +246,38 @@ int check_memcpy(int ret)
     return (ret);
 }
 
+int check_strdup(int ret)
+{
+    char *src;
+    char *dest;
+    int i = 3;
+    int j = 0;
+    
+    
+    src = (char *)malloc(sizeof(char) * i);
+    while (j < i)
+    {
+        src[j] = 'a';
+        j++;
+    }
+    dest = NULL;
+    printf("\n\nft_strdup\n");
+    dest = ft_strdup(src);
+    j = 0;
+    while (j < i)
+    {
+        if (dest[j] == src[j])
+            ok();
+        else
+        {
+            ko();
+            ret++;
+        }
+        j++;
+    }
+    return (ret);
+}
+
 int main(void)
 {
     int ret;
@@ -264,7 +296,8 @@ int main(void)
     printf("(null) == OK\n");
     ret = check_strcat(ret);
     ret = check_memcpy(ret);
-    
+    ret = check_strdup(ret);
+
     
 
 
