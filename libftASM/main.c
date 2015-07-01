@@ -253,7 +253,6 @@ int check_strdup(int ret)
     int i = 3;
     int j = 0;
     
-    
     src = (char *)malloc(sizeof(char) * i);
     while (j < i)
     {
