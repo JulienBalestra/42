@@ -3,9 +3,9 @@ CFLAGS = -f
 LFLAGS = ar rc
 CC = nasm
 RM = rm -f
-INCLUDES = includes
-OBJSDIR = .objects
-SRCSDIR = srcs
+INC_DIR = INC_DIR
+OBJ_DIR = .objects
+SRC_DIR = srcs
 
 SRCS = 	   \
 ft_isalnum.s \
@@ -28,9 +28,7 @@ ft_memcpy.s \
 ft_strdup.s \
 ft_cat.s
 
-
-
-OBJS = $(patsubst %.s, $(OBJSDIR)/%.o, $(SRCS))
+OBJS = $(patsubst %.s, $(OBJ_DIR)/%.o, $(SRCS))
 
 PREFIX =
 
@@ -46,22 +44,22 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJSDIR) $(OBJS)
+$(NAME): $(OBJ_DIR) $(OBJS)
 	$(LFLAGS) $(NAME) $(OBJS)
 
-$(OBJSDIR)/%.o	:	$(addprefix $(SRCSDIR)/, %.s)
+$(OBJ_DIR)/%.o	:	$(addprefix $(SRC_DIR)/, %.s)
 	$(CC) $(CFLAGS) -o $@ $(PREFIX) $^
 
-$(OBJSDIR)	:
-	mkdir -p $(OBJSDIR)
+$(OBJ_DIR)	:
+	mkdir -p $(OBJ_DIR)
 
 test:
-	gcc -o test main.c $(NAME) -I $(INCLUDES)
+	gcc -o test main.c $(NAME) -I $(INC_DIR)
 
 .phony: clean re fclean
 
 fclean: clean
-	rm -rf $(OBJSDIR)
+	rm -rf $(OBJ_DIR)
 	$(RM) $(NAME)
 
 clean:
