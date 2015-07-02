@@ -1,6 +1,8 @@
-# 42 [![Build Status](https://travis-ci.org/JulienBalestra/42.svg?branch=master)](https://travis-ci.org/julienbalestra/42)
+[![Build Status](https://travis-ci.org/JulienBalestra/42.svg?branch=master)](https://travis-ci.org/julienbalestra/42)
 
+# 42 
 
+Programming School
 
 ### Tavis CI
  
@@ -14,7 +16,7 @@
 With more than **370 unit & functional tests**
 
 
-More details about the projects in subjects/
+Coding guidelines about the projects are available in ***subjects/*** root directory
 
 ## C
 
