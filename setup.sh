@@ -50,7 +50,10 @@ function config_moulitest
 
 function config_pip
 {
-    source env/bin/activate
+    if [ -d env ]
+    then
+        source env/bin/activate
+    fi
     pip install -r requirements/requirements.txt
     if [ $? -ne 0 ]
     then
