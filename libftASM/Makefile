@@ -3,7 +3,7 @@ CFLAGS = -f
 LFLAGS = ar rc
 CC = nasm
 RM = rm -f
-INC_DIR = INC_DIR
+INC_DIR = includes
 OBJ_DIR = .objects
 SRC_DIR = srcs
 
