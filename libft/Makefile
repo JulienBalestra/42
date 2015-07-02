@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 INC_DIR = includes/
 SRC_DIR = srcs/
-OBJ_DIR = builds/
+OBJ_DIR = .objects/
 OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 TARGET = $(NAME).a
 ENV = $(shell uname -s)
