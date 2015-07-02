@@ -34,7 +34,7 @@ OBJS = $(patsubst %.s, $(OBJSDIR)/%.o, $(SRCS))
 
 PREFIX =
 
-UNAME := $(shell uname)
+UNAME := $(shell uname -s)
 
 ifeq ($(UNAME), Linux)
 	CFLAGS += elf64
@@ -68,3 +68,5 @@ clean:
 	$(RM) $(OBJS) test
 
 re: fclean all
+
+fre: fclean all test
