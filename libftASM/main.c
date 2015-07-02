@@ -281,6 +281,15 @@ int check_strdup(int ret)
     return (ret);
 }
 
+void check_puts(void)
+{
+    printf("\n");
+    ft_puts("\nft_puts");
+    ft_puts("\033[0;32m\033[1m.\033[0m");
+    ft_puts(NULL);
+    printf("(null) == OK\n");
+}
+
 void call_cat(void)
  {
     int fd = 0;
@@ -292,8 +301,7 @@ void call_cat(void)
 
 int main(void)
 {
-    int ret;
-    
+    int ret;    
 
     ret = 0;
     printf("Start testing :");
@@ -302,18 +310,11 @@ int main(void)
     ret = check_bzero(ret);
     ret = check_memset(ret);
     ret = check_memalloc(ret);
-    printf("\n");
-    ft_puts("\nft_puts");
-    ft_puts("\033[0;32m\033[1m.\033[0m");
-    ft_puts(NULL);
-    printf("(null) == OK\n");
+    check_puts();
     ret = check_strcat(ret);
     ret = check_memcpy(ret);
     ret = check_strdup(ret);
     call_cat();
-
-    
-
 
     printf("\n\nfailed: %i\n", ret);
     return (ret > 0 ? 1 : 0);
