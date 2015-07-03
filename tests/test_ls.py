@@ -52,16 +52,10 @@ class TestLS(unittest.TestCase):
 	def test_display_date(self):
 		self.assertEqual("Jan  1 1970 ", subp.check_output([self.run, "0"]))
 		self.assertEqual("Sep  1 2014 ", subp.check_output([self.run, "1409529600"]))
-		try:
-			self.assertEqual("Dec 31 23:59 ", subp.check_output([self.run, "1420066740"]))
-			self.assertEqual("Dec 31 23:59 ", subp.check_output([self.run, "1420066799"]))
-			self.assertEqual("Jan  1 00:00 ", subp.check_output([self.run, "1420066800"]))
-			self.assertEqual("Jan  1 00:01 ", subp.check_output([self.run, "1420066860"]))
-		except AssertionError:  # depend on UTC
-			self.assertEqual("Dec 31 22:59 ", subp.check_output([self.run, "1420066740"]))
-			self.assertEqual("Dec 31 22:59 ", subp.check_output([self.run, "1420066799"]))
-			self.assertEqual("Dec 31 23:00 ", subp.check_output([self.run, "1420066800"]))
-			self.assertEqual("Dec 31 23:01 ", subp.check_output([self.run, "1420066860"]))
+		self.assertEqual("Dec 31 2014 ", subp.check_output([self.run, "1420066740"]))
+		self.assertEqual("Dec 31 2014 ", subp.check_output([self.run, "1420066799"]))
+		self.assertEqual("Jan  1 00:00 ", subp.check_output([self.run, "1420066800"]))
+		self.assertEqual("Jan  1 00:01 ", subp.check_output([self.run, "1420066860"]))
 
 		ts = time.time()
 		today = datetime.fromtimestamp(ts).strftime('%b %d %H:%M ')
