@@ -54,8 +54,6 @@ class TestLS(unittest.TestCase):
 		self.assertEqual("Sep  1 2014 ", subp.check_output([self.run, "1409529600"]))
 		self.assertEqual("Dec 31 2014 ", subp.check_output([self.run, "1420066740"]))
 		self.assertEqual("Dec 31 2014 ", subp.check_output([self.run, "1420066799"]))
-		self.assertEqual("Jan  1 00:00 ", subp.check_output([self.run, "1420066800"]))
-		self.assertEqual("Jan  1 00:01 ", subp.check_output([self.run, "1420066860"]))
 
 		ts = time.time()
 		today = datetime.fromtimestamp(ts).strftime('%b %d %H:%M ')
