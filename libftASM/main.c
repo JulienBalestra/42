@@ -304,8 +304,8 @@ int check_power(int ret)
     int i = 5;
     int j = 0;
     
-    printf("\n\nft_power\n");
-    j = ft_power(i);
+    printf("\n\nft_square\n");
+    j = ft_square(i);
     if (j == (i * i))
         ok();
     else

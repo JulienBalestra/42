@@ -1,7 +1,7 @@
 section	.text
-	global ft_power
+	global ft_square
 
-ft_power:
+ft_square:
 	enter 0, 0	; save register
 	imul rdi, rdi
 	mov rax, rdi
