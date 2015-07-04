@@ -29,5 +29,6 @@ int	ft_isblank(int c);
 int	ft_islower(int c);
 int	ft_isupper(int c);
 void *ft_memalloc(size_t size);
+int ft_abs(int i);
 
 #endif
