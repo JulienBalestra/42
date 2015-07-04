@@ -298,6 +298,23 @@ void call_cat(void)
     fd = open("hello.world", O_RDONLY);
     ft_cat(fd);    
  }
+ 
+int check_power(int ret)
+{
+    int i = 5;
+    int j = 0;
+    
+    printf("\n\nft_power\n");
+    j = ft_power(i);
+    if (j == (i * i))
+        ok();
+    else
+    {
+        ko();
+        ret++;
+    }
+    return (ret);
+}
 
 int main(void)
 {
@@ -315,6 +332,7 @@ int main(void)
     ret = check_memcpy(ret);
     ret = check_strdup(ret);
     call_cat();
+    check_power(ret);
 
     printf("\n\nfailed: %i\n", ret);
     return (ret > 0 ? 1 : 0);

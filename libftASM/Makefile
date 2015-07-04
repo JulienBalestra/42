@@ -27,7 +27,8 @@ ft_strcat.s \
 ft_memcpy.s \
 ft_strdup.s \
 ft_cat.s	\
-ft_abs.s
+ft_abs.s \
+ft_power.s
 
 OBJS = $(patsubst %.s, $(OBJ_DIR)/%.o, $(SRCS))
 

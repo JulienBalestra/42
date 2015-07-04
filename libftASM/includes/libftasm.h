@@ -30,5 +30,6 @@ int	ft_islower(int c);
 int	ft_isupper(int c);
 void *ft_memalloc(size_t size);
 int ft_abs(int i);
+int ft_power(int i);
 
 #endif
