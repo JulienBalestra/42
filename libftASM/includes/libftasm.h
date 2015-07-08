@@ -1,7 +1,6 @@
 #ifndef LIBFTASM_H
 # define LIBFTASM_H
 # include <strings.h>
-# include <stdlib.h>
 
 /* part one */
 void ft_bzero(void *s, size_t n);
