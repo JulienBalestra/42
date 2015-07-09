@@ -14,9 +14,9 @@ section	.text
 	global	ft_cat
 
 ft_cat:
-	enter	0, 0
-	cmp	rdi, 0
-	jl	exit
+	enter 0, 0
+	cmp rdi, 0 ; if fd
+	jl exit
 
 read_fd:
 	push rdi
@@ -38,7 +38,7 @@ write_buf:
 	cmp rax, 0
 	jl error
 	pop rdi
-	jmp read_fd
+	jmp read_fd ; recurse
 
 error:
 	pop	rdi
