@@ -63,7 +63,7 @@ class TestLS(unittest.TestCase):
 
 		today = datetime.fromtimestamp(ts - 15778463).strftime('%b %d %H:%M ')
 		if datetime.fromtimestamp(ts - 15778463).strftime('%d')[0] == '0':
-			today = datetime.fromtimestamp(ts - 15778463).strftime('%b  %-d %H:%M ')
+			today = datetime.fromtimestamp(ts - 15778463).strftime('%b  %-d %Y ')
 		self.assertEqual(today, subp.check_output([self.run, str(ts - 15778463)]))
 
 	def test_long_display_00(self):

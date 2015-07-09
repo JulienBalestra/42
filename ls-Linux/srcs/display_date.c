@@ -66,7 +66,7 @@ static void display_hm_or_year(char *str_date, time_t file_date, int i_hm_year)
 
 	year = convert_year(str_date);
 	today_ts = time(&today_ts);
-	if (((today_ts / 31556926) + 1970 == year) || (
+	if (((today_ts / 31556926) + 1970 == year) && (
 		((file_date + 15770000) >= today_ts) &&
 		((file_date - 15770000) <= today_ts)))
 		display_hm_or_pass_hms(str_date, 1);
