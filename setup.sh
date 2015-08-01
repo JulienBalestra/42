@@ -66,8 +66,8 @@ function setup_libft
 
 function setup_libftASM
 {
-    echo "Setup libft..."
-    if [ ! -d libft ]
+    echo "Setup libftASM..."
+    if [ ! -d libftASM ]
     then        
         git clone https://github.com/JulienBalestra/libftASM.git libftASM
         if [ $? -ne 0 ]
