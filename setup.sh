@@ -48,6 +48,22 @@ function config_moulitest
 
 }
 
+function setup_libft
+{
+    echo "Setup libft..."
+    if [ ! -d libft ]
+    then        
+        git clone https://github.com/JulienBalestra/libft.git libft
+        if [ $? -ne 0 ]
+        then
+            echo "can't use git"
+            exit 2
+        fi
+    else    
+        echo "-> Already downloaded"
+    fi
+}
+
 function config_pip
 {
     if [ -d env ]
@@ -129,6 +145,7 @@ function main
     # Requirements
     go_to_dirname
     path=$(pwd)
+    setup_libft
     setup_moulitest
     create_config
     run_test
