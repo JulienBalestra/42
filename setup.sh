@@ -13,7 +13,7 @@ function go_to_dirname
 }
 
 function is_dir
-{    
+{
     if [ ! -d moulitest ]
     then
         return 0
@@ -54,6 +54,22 @@ function setup_libft
     if [ ! -d libft ]
     then        
         git clone https://github.com/JulienBalestra/libft.git libft
+        if [ $? -ne 0 ]
+        then
+            echo "can't use git"
+            exit 2
+        fi
+    else    
+        echo "-> Already downloaded"
+    fi
+}
+
+function setup_libftASM
+{
+    echo "Setup libft..."
+    if [ ! -d libft ]
+    then        
+        git clone https://github.com/JulienBalestra/libftASM.git libftASM
         if [ $? -ne 0 ]
         then
             echo "can't use git"
@@ -146,6 +162,7 @@ function main
     go_to_dirname
     path=$(pwd)
     setup_libft
+    setup_libftASM
     setup_moulitest
     create_config
     run_test
