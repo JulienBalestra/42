@@ -61,6 +61,7 @@ function libftASM
 
 function run_tests
 {
+    export LC_ALL=C
     declare -i code=0
     cd tests
     
