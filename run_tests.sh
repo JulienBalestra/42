@@ -44,7 +44,7 @@ function ft_ls
 function computorv1
 {
     echo "[computorv1]"
-    nosetests test_computorv1.py test_sample.py
+    nosetests ../computor/srcs/tests/
     ret_computorv1=$?
     echo "[/computorv1]"
     return ${ret_computorv1}

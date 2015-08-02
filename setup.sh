@@ -64,6 +64,22 @@ function setup_libft
     fi
 }
 
+function setup_computor
+{
+    echo "Setup libft..."
+    if [ ! -d computor ]
+    then        
+        git clone https://github.com/JulienBalestra/computor.git computor
+        if [ $? -ne 0 ]
+        then
+            echo "can't use git"
+            exit 2
+        fi
+    else  
+        git -C computor pull
+    fi
+}
+
 function setup_libftASM
 {
     echo "Setup libftASM..."
@@ -115,7 +131,6 @@ function create_config
     config_pip
     config_moulitest
     config_nasm
-    export LC_ALL=C
     echo "-> Config set"
 }
 
@@ -126,6 +141,7 @@ function main
     path=$(pwd)
     setup_libft
     setup_libftASM
+    setup_computor
     setup_moulitest
     create_config
     return $?
