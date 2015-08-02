@@ -1,16 +1,12 @@
 [submodule "computor"]
 	path = computor
 	url = https://github.com/JulienBalestra/computor.git
-	branch = master
 [submodule "libft"]
 	path = libft
 	url = https://github.com/JulienBalestra/libft.git
-	branch = master
 [submodule "libftASM"]
 	path = libftASM
 	url = https://github.com/JulienBalestra/libftASM.git
-	branch = master
 [submodule "moulitest"]
 	path = moulitest
 	url = https://github.com/JulienBalestra/moulitest.git
-	branch = master
