@@ -18,45 +18,45 @@ function libft
     echo ""
     echo "[libft]"
     nosetests test_libft.py
-    ret=$?
+    ret_libft=$?
     echo "[/libft]"
-    
+    return ${ret_libft}
 }
 
 function get_next_line
 {
     echo "[get next line]"
     nosetests test_gnl.py
-    ret=$?
+    ret_get_next_line=$?
     echo "[/get next line]"
-    return ${ret}
+    return ${ret_get_next_line}
 }
 
 function ft_ls
 {
     echo "[ls]"
     nosetests test_ls.py    
-    ret=$?
+    ret_ft_ls=$?
     echo "[/ls]"
-    return ${ret}
+    return ${ret_ft_ls}
 }
 
 function computorv1
 {
     echo "[computorv1]"
     nosetests test_computorv1.py test_sample.py
-    ret=$?
+    ret_computorv1=$?
     echo "[/computorv1]"
-    return ${ret}
+    return ${ret_computorv1}
 }
 
 function libftASM
 {
     echo "[libftASM]"
     nosetests test_libftasm.py
-    ret=$?
+    ret_libftASM=$?
     echo "[/libftASM]"
-    return ${ret}
+    return ${ret_libftASM}
 }
 
 function run_tests
