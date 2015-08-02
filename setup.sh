@@ -26,14 +26,14 @@ function setup_moulitest
     echo "Setup moulitest..."
     if [ ! -d moulitest ]
     then        
-        git clone https://github.com/jbalestra/moulitest.git moulitest
+        git clone https://github.com/JulienBalestra/moulitest.git moulitest
         if [ $? -ne 0 ]
         then
             echo "can't use git"
             exit 2
         fi
     else
-        echo "-> Already downloaded"
+        git -C moulitest pull
     fi
 }
 
@@ -59,8 +59,8 @@ function setup_libft
             echo "can't use git"
             exit 2
         fi
-    else    
-        echo "-> Already downloaded"
+    else  
+        git -C libft pull
     fi
 }
 
@@ -76,7 +76,7 @@ function setup_libftASM
             exit 2
         fi
     else    
-        echo "-> Already downloaded"
+        git -C libftASM pull
     fi
 }
 
@@ -119,43 +119,6 @@ function create_config
     echo "-> Config set"
 }
 
-function run_test
-{
-    declare -i ret=0
-    cd tests
-    echo "Start unittesting on "$(uname -s)
-    echo ""
-    echo "[libft]"
-    nosetests test_libft.py
-    ret=($?+ret)
-    echo "[/libft]"
-    echo ""
-    echo "[get next line]"
-    nosetests test_gnl.py
-    ret=($?+ret)
-    echo "[/get next line]"
-    echo ""
-    echo "[ls]"
-    nosetests test_ls.py
-    ret=($?+ret)
-    echo "[/ls]"
-    echo ""
-    echo "[computorv1]"
-    nosetests test_computorv1.py test_sample.py
-    ret=($?+ret)
-    echo "[/computorv1]"
-    echo ""
-    echo "[libftASM]"
-    nosetests test_libftasm.py
-    ret=($?+ret)
-    echo "[/libftASM]"
-    echo ""
-    echo "Again, full stack"
-    nosetests test_libft.py test_gnl.py test_ls.py test_computorv1.py test_sample.py test_libftasm.py
-    ret=($?+ret)
-    return $ret
-}
-
 function main
 {
     # Requirements
@@ -165,7 +128,6 @@ function main
     setup_libftASM
     setup_moulitest
     create_config
-    run_test
     return $?
 }
 

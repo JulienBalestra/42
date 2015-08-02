@@ -7,3 +7,4 @@ before_install:
   - sudo apt-get install -y nasm
 script:
   ./setup.sh
+  ./run_tests.sh
