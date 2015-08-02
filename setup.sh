@@ -21,22 +21,6 @@ function is_dir
     return 1
 }
 
-function setup_moulitest
-{
-    echo "Setup moulitest..."
-    if [ ! -d moulitest ]
-    then        
-        git clone https://github.com/JulienBalestra/moulitest.git moulitest
-        if [ $? -ne 0 ]
-        then
-            echo "can't use git"
-            exit 2
-        fi
-    else
-        git -C moulitest pull
-    fi
-}
-
 function config_moulitest
 {
     mv moulitest/config.ini moulitest/config.ini.old 2> /dev/null
@@ -48,53 +32,16 @@ function config_moulitest
 
 }
 
-function setup_libft
+function setup_submodules
 {
-    echo "Setup libft..."
-    if [ ! -d libft ]
-    then        
-        git clone https://github.com/JulienBalestra/libft.git libft
-        if [ $? -ne 0 ]
-        then
-            echo "can't use git"
-            exit 2
-        fi
-    else  
-        git -C libft pull
-    fi
+    echo "Setup git submodules..."
+    for module in computor libft libftASM moulitest
+    do
+        git submodule init ${module}
+        git submodule update --${module}
+    done
 }
 
-function setup_computor
-{
-    echo "Setup libft..."
-    if [ ! -d computor ]
-    then        
-        git clone https://github.com/JulienBalestra/computor.git computor
-        if [ $? -ne 0 ]
-        then
-            echo "can't use git"
-            exit 2
-        fi
-    else  
-        git -C computor pull
-    fi
-}
-
-function setup_libftASM
-{
-    echo "Setup libftASM..."
-    if [ ! -d libftASM ]
-    then        
-        git clone https://github.com/JulienBalestra/libftASM.git libftASM
-        if [ $? -ne 0 ]
-        then
-            echo "can't use git"
-            exit 2
-        fi
-    else    
-        git -C libftASM pull
-    fi
-}
 
 function config_pip
 {
@@ -139,10 +86,7 @@ function main
     # Requirements
     go_to_dirname
     path=$(pwd)
-    setup_libft
-    setup_libftASM
-    setup_computor
-    setup_moulitest
+    setup_submodules
     create_config
     return $?
 }
