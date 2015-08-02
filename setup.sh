@@ -38,7 +38,7 @@ function setup_submodules
     for module in computor libft libftASM moulitest
     do
         git submodule init ${module}
-        git submodule update --${module}
+        git submodule update --remote ${module}
     done
 }
 
