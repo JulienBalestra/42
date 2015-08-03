@@ -35,7 +35,7 @@ function config_moulitest
 function setup_submodules
 {
     echo "Setup git submodules..."
-    for module in computor libft libftASM moulitest
+    for module in computor libft libftASM moulitest get_next_line
     do
         git submodule init ${module}
         git submodule update --remote ${module}
