@@ -10,3 +10,6 @@
 [submodule "moulitest"]
 	path = moulitest
 	url = https://github.com/JulienBalestra/moulitest.git
+[submodule "get_next_line"]
+	path = get_next_line
+	url = https://github.com/JulienBalestra/get_next_line.git
