@@ -13,3 +13,9 @@
 [submodule "get_next_line"]
 	path = get_next_line
 	url = https://github.com/JulienBalestra/get_next_line.git
+[submodule "ls_darwin"]
+	path = ls_darwin
+	url = https://github.com/JulienBalestra/ls_darwin.git
+[submodule "ls_linux"]
+	path = ls_linux
+	url = https://github.com/JulienBalestra/ls_linux.git
