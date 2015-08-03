@@ -12,7 +12,7 @@ from pymake.pymake import PyMake
 class TestLS(unittest.TestCase):
 	debug_mod = False
 	kernel = subp.check_output(["uname", "-s"]).replace("\n", "")
-	context_path = os.path.split(os.path.dirname(__file__))[0] + "/ls-%s/" % kernel
+	context_path = os.path.split(os.path.dirname(__file__))[0] + "/ls_%s/" % kernel.lower()
 	makefile = PyMake(context_path + "Makefile")
 	options = [opt for opt in "1lQRartUfgdG"]
 	real_f, fake_f, null_f = glob.glob(context_path + "*"), [str(k) for k in xrange(50)], open(os.devnull, 'w')

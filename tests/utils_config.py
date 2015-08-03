@@ -25,7 +25,7 @@ class SetLSConfig:
         # test_foo
         ft_filename = test_method_name[5:]
         # ~/ls/        
-        ls_dir = os.path.split(os.path.dirname(__file__))[0] + "/ls-%s/" % self.kernel
+        ls_dir = os.path.split(os.path.dirname(__file__))[0] + "/ls_%s/" % self.kernel.lower()
         # ~/tests/
         tests_dir = os.path.dirname(os.path.abspath(__file__)) + "/"
         self.files = {
