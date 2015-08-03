@@ -40,6 +40,10 @@ function setup_submodules
         git submodule init ${module}
         git submodule update --remote ${module}
     done
+    for sym in ls_darwin ls_linux
+    do 
+        ln -s libft ${sym}/libft
+    done
 }
 
 
