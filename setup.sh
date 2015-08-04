@@ -34,16 +34,19 @@ function config_moulitest
 
 function setup_submodules
 {
-    echo "Setup git submodules..."
+    printf "\nSetup git submodules...\n"
     for module in computor libft libftASM moulitest get_next_line ls_darwin ls_linux
     do
         git submodule init ${module}
         git submodule update --remote ${module}
     done
+    printf "\n-> Git submodules set\n"
+    printf "\nSetup git sub-submodules...\n"
     for setup in get_next_line ls_darwin ls_linux
     do 
         bash ${setup}/setup.sh
     done
+    printf "\n-> Git sub-submodules set\n"
 }
 
 
@@ -51,7 +54,7 @@ function config_pip
 {
     if [ -d env ]
     then
-        source env/bin/activate
+        . env/bin/activate
     fi
     pip install -r requirements/requirements.txt
     if [ $? -ne 0 ]
