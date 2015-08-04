@@ -61,7 +61,9 @@ function libftASM
 
 function run_tests
 {
+    # Locale for /bin/ls implementation (merge sort by ASCII)
     export LC_ALL=C
+    
     declare -i code=0
     cd tests
     
