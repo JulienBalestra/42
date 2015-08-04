@@ -22,12 +22,13 @@ function is_dir
 }
 
 function config_moulitest
-{
+{    
     mv moulitest/config.ini moulitest/config.ini.old 2> /dev/null
     while read line
     do
-        output=${line/"@"/$path/}
-        echo $output >> moulitest/config.ini
+        # ${path} in main scope
+        output=${line/"@"/${path}/}
+        echo ${output} >> moulitest/config.ini
     done < requirements/moulitest.config
 
 }
