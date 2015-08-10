@@ -4,23 +4,6 @@
 
 Programming School
 
-In order:
-
-If needed, a virtualenv:
-
-    sudo apt-get install python-virtualenv
-    virtualenv env
-    
-Then if you are sudo (like I do in Travis):
-
-    bash setup.sh
-    bash run_tests.sh
-    
-Or find a way to have in $PATH:
-
-* nosetests
-* nasm
-
 
 ### Tavis CI
  
@@ -51,3 +34,23 @@ Coding guidelines about the projects are available in ***subjects/*** root direc
 ## Assembly
 
 * LibftASM (current)
+
+
+# Run everything
+
+### Linux 
+
+If needed, a virtualenv:
+
+    sudo apt-get update -qq && sudo apt-get install python-virtualenv
+    virtualenv env
+    
+Then if you are sudo (like I am in Travis containers):
+
+    ./setup.sh
+    ./run_tests.sh
+    
+Or find a way to have in $PATH:
+
+* nosetests
+* nasm
