@@ -65,13 +65,13 @@ function config_pip
     fi
 }
 
-function config_nasm
+function apt
 {
     nasm -h > /dev/null
     if [ $? -ne 0 ]
     then
         apt-get update -qq
-        apt-get install nasm -y
+        apt-get install nasm python-nose -y
         if [ $? -ne 0 ]
         then
             echo "failed to install nasm"
@@ -85,7 +85,7 @@ function create_config
     echo "Check config..."
     config_pip
     config_moulitest
-    config_nasm
+    apt
     echo "-> Config set"
 }
 
