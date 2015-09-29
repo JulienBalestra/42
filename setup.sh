@@ -39,7 +39,7 @@ function setup_submodules
     for module in computor libft libftASM moulitest get_next_line ls_darwin ls_linux
     do
         git submodule init ${module}
-        git submodule update --remote ${module}
+        git submodule update --remote ${module} || git submodule update ${module}
     done
     printf "\n-> Git submodules set\n"
     printf "\nSetup git sub-submodules...\n"
