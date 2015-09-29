@@ -1,6 +1,6 @@
 os:
   - linux
-  - osx
+#  - osx
 language: python
 before_install:
   - sudo apt-get install -y nasm
