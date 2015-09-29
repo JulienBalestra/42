@@ -33,7 +33,7 @@ Coding guidelines about the projects are available in ***subjects/*** root direc
 
 ## Assembly
 
-* LibftASM (current)
+* LibftASM (120%)
 
 
 # Run everything
