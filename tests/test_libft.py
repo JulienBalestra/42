@@ -117,6 +117,13 @@ class TestLibAsserts(unittest.TestCase):
                      ("none", "*", "1", "none"),
                      ("one.test...here....", ".", "3", "one:test:here"), ("****", "*", "0", ""), ("", "*", "0", "")]:
             self.assertEqual(args[3], check_output([self.run, args[0], args[1], args[2]]))
+            
+    def test_lz_strsplit(self):
+        for args in [("salut****!", "*", "2", "salut:!"),
+                     ("test*me", "*", "2", "test:me"), ("another test", " ", "2", "another:test"),
+                     ("none", "*", "1", "none"),
+                     ("one.test...here", ".", "3", "one:test:here")]:
+            self.assertEqual(args[3], check_output([self.run, args[0], args[1], args[2]]))
 
     def test_memalloc(self):
         self.assertEqual(0, call([self.run, "2"]))
@@ -192,6 +199,10 @@ class TestLibAsserts(unittest.TestCase):
     def test_putstr_fd(self):
         for my_str in ["test", "another test"]:
             self.assertEqual(my_str, check_output([self.run, my_str]))
+            
+    def test_remove_useless(self):
+        for mystr in [("  one  ", "one"), ("one", "one"), ("  two  ", "two"), (" one  two ", "one  two")]:
+            self.assertEqual(mystr[1], check_output([self.run, mystr[0]]))
 
     def test_strcasestr(self):
         for args in [("1", "a", "(null)"), ("22", "b", "(null)"), ("b", "22", "(null)"),
