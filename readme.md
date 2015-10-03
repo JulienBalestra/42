@@ -24,6 +24,7 @@ Coding guidelines about the projects are available in ***subjects/*** root direc
 * Libft (108%)
 * Get_Next_Line (111%)
 * ft_ls (117%)
+* sh1 (current)
 
 
 ## Python
