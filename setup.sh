@@ -12,15 +12,6 @@ function go_to_dirname
     echo "-> Current directory is" $(pwd)
 }
 
-function is_dir
-{
-    if [ ! -d moulitest ]
-    then
-        return 0
-    fi
-    return 1
-}
-
 function config_moulitest
 {    
     mv moulitest/config.ini moulitest/config.ini.old 2> /dev/null
@@ -43,7 +34,7 @@ function setup_submodules
     done
     printf "\n-> Git submodules set\n"
     printf "\nSetup git sub-submodules...\n"
-    for setup in get_next_line ls_darwin ls_linux
+    for setup in libft libftASM get_next_line ls_darwin ls_linux sh1
     do 
         bash ${setup}/setup.sh
     done
@@ -71,10 +62,10 @@ function apt
     if [ $? -ne 0 ]
     then
         apt-get update -qq
-        apt-get install nasm python-nose -y
+        apt-get install python-nose -y
         if [ $? -ne 0 ]
         then
-            echo "failed to install nasm"
+            echo "failed to install python-nose"
             exit 2
         fi
     fi
