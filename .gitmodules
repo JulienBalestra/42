@@ -19,6 +19,3 @@
 [submodule "ls_linux"]
 	path = ls_linux
 	url = https://github.com/JulienBalestra/ls_linux.git
-[submodule "sh1"]
-	path = sh1
-	url = https://github.com/JulienBalestra/sh1.git
