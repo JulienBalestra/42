@@ -19,3 +19,6 @@
 [submodule "ls_linux"]
 	path = ls_linux
 	url = https://github.com/JulienBalestra/ls_linux.git
+[submodule "minishell"]
+	path = minishell
+	url = https://github.com/JulienBalestra/minishell.git
