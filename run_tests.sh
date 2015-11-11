@@ -59,6 +59,15 @@ function libftASM
     return ${ret_libftASM}
 }
 
+function minishell
+{
+    echo "[minishell]"
+    ../minishell/run_test.sh
+    ret_minishell=$?
+    echo "[/minishell]"
+    return ${ret_minishell}
+}
+
 function run_tests
 {
     # Locale for /bin/ls implementation (merge sort by ASCII)
@@ -80,6 +89,9 @@ function run_tests
     code=($?+code)
     
     libftASM
+    code=($?+code)
+
+    minishell
     code=($?+code)
 
     return ${code}
