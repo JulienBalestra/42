@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JulienBalestra/42.svg?branch=master)](https://travis-ci.org/julienbalestra/42)
+[![Build Status](https://travis-ci.org/JulienBalestra/42.svg?branch=master)](https://travis-ci.org/JulienBalestra/42)
 
 # 42 
 
@@ -14,7 +14,7 @@ Programming School
 * computorv1
 * libftASM
 
-With more than **370 unit & functional tests**
+With more than **400 unit & functional tests**
 
 
 Coding guidelines about the projects are available in ***subjects/*** root directory
@@ -24,7 +24,7 @@ Coding guidelines about the projects are available in ***subjects/*** root direc
 * Libft (108%)
 * Get_Next_Line (111%)
 * ft_ls (117%)
-* sh1 (current)
+* minishell (current)
 
 
 ## Python
