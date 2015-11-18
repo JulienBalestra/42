@@ -268,7 +268,7 @@ class TestLS(unittest.TestCase):
 		self.assertEqual(real, mine)
 
 	def test_valgrind_errors(self):
-		slow = False  # Very Slow at True because of Valgrind
+		slow = True  # Very Slow at True because of Valgrind
 		if slow is False:
 			return
 		self.assertFalse(utils_config.valgrind_wrapper(self.run, errors=True, args=["-1"]))  # Will get file "."
@@ -278,7 +278,7 @@ class TestLS(unittest.TestCase):
 		self.assertFalse(utils_config.valgrind_wrapper(self.run, errors=True, args=["-lR"]))
 
 	def test_valgrind_leaks(self):
-		slow = False  # Very Slow at True because of Valgrind
+		slow = True  # Very Slow at True because of Valgrind
 		if slow is False:
 			return
 		self.assertFalse(utils_config.valgrind_wrapper(self.run, leaks=True))  # Will get file "."
