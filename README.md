@@ -49,7 +49,7 @@ If needed, a virtualenv:
     sudo apt-get update -qq && sudo apt-get install python-virtualenv
     virtualenv env
     
-Then if you are sudo (like I am in Travis containers):
+You need to be root:
 
     ./setup.sh
     ./run_tests.sh
@@ -58,3 +58,4 @@ Or find a way to have in $PATH:
 
 * nosetests
 * nasm
+* valgrind
