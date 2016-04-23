@@ -17,7 +17,7 @@ function libft
     echo "Start unittesting on "$(uname -s)
     echo ""
     echo "[libft]"
-    ../libft/run_test.sh
+    ./libft/run_test.sh
     ret_libft=$?
     echo "[/libft]"
     return ${ret_libft}
@@ -26,25 +26,29 @@ function libft
 function get_next_line
 {
     echo "[get next line]"
+    cd tests
     nosetests test_gnl.py
     ret_get_next_line=$?
     echo "[/get next line]"
+    cd -
     return ${ret_get_next_line}
 }
 
 function ft_ls
 {
     echo "[ls]"
-    nosetests test_ls.py    
+    cd tests
+    nosetests test_ls.py
     ret_ft_ls=$?
     echo "[/ls]"
+    cd -
     return ${ret_ft_ls}
 }
 
 function computorv1
 {
     echo "[computorv1]"
-    nosetests ../computor/srcs/tests/
+    nosetests computor/srcs/tests/
     ret_computorv1=$?
     echo "[/computorv1]"
     return ${ret_computorv1}
@@ -53,7 +57,7 @@ function computorv1
 function libftASM
 {
     echo "[libftASM]"
-    nosetests test_libftasm.py
+    nosetests tests/test_libftasm.py
     ret_libftASM=$?
     echo "[/libftASM]"
     return ${ret_libftASM}
@@ -62,10 +66,19 @@ function libftASM
 function minishell
 {
     echo "[minishell]"
-    ../minishell/run_test.sh
+    ./minishell/run_test.sh
     ret_minishell=$?
     echo "[/minishell]"
     return ${ret_minishell}
+}
+
+function 21sh
+{
+    echo "[21sh]"3
+    ./21sh/run_test.sh
+    ret_21sh=$?
+    echo "[/21sh]"
+    return ${ret_21sh}
 }
 
 function run_tests
@@ -74,7 +87,6 @@ function run_tests
     export LC_ALL=C
     
     declare -i code=0
-    cd tests
     
     libft
     code=($?+code)    
@@ -92,6 +104,9 @@ function run_tests
     code=($?+code)
 
     minishell
+    code=($?+code)
+
+    21sh
     code=($?+code)
 
     return ${code}
