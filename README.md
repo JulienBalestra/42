@@ -13,6 +13,8 @@ Programming School
 * ls-Linux
 * computorv1
 * libftASM
+* minishell
+* 21sh
 
 With more than **600 unit & functional tests**
 

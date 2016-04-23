@@ -25,3 +25,6 @@
 [submodule "21sh"]
 	path = 21sh
 	url = https://github.com/JulienBalestra/21sh.git
+[submodule "42cbox"]
+	path = 42cbox
+	url = https://github.com/JulienBalestra/42cbox.git
