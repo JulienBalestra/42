@@ -22,3 +22,6 @@
 [submodule "minishell"]
 	path = minishell
 	url = https://github.com/JulienBalestra/minishell.git
+[submodule "21sh"]
+	path = 21sh
+	url = https://github.com/JulienBalestra/21sh.git
