@@ -17,7 +17,7 @@ function libft
     echo "Start unittesting on "$(uname -s)
     echo ""
     echo "[libft]"
-    nosetests test_libft.py
+    ../libft/run_test.sh
     ret_libft=$?
     echo "[/libft]"
     return ${ret_libft}
